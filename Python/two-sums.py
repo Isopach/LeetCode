@@ -16,8 +16,7 @@ class Solution(object):
                 search[num] = i                 #repeat search for next element
                 
 
-#Two-pass Hash Table
-
+#Two-pass Hash Table O(n)
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -35,4 +34,19 @@ class Solution(object):
         return r
 
     
-#One-pass Hash Table
+#One-pass Hash Table O(n)
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        ndict = {}
+        for i, num in enumerate(nums):                          #Search while creating dict
+            complement = target - num
+            if complement in ndict:                             #If complement exists in dict, return immediately
+                return [ndict[complement], i]
+            else:
+                ndict[num] = i                                  #Adds key (num) and value (i) into dict if not found
+
